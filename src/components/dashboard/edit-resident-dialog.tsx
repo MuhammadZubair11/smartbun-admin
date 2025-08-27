@@ -69,7 +69,11 @@ export function EditResidentDialog({
   }, [resident, form])
 
   function onSubmit(values: FormData) {
-    onUpdateResident({ ...resident, ...values, nextAppointment: values.nextAppointment?.toISOString() });
+    onUpdateResident({
+      ...resident,
+      ...values,
+      nextAppointment: values.nextAppointment ? values.nextAppointment.toISOString() : ''
+    });
   }
 
   return (
