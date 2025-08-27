@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -57,22 +56,28 @@ export function EditResidentDialog({
     resolver: zodResolver(formSchema),
     defaultValues: {
       ...resident,
-      nextAppointment: resident.nextAppointment ? new Date(resident.nextAppointment) : undefined,
+      nextAppointment: resident.nextAppointment
+        ? new Date(resident.nextAppointment)
+        : undefined,
     },
   });
-  
+
   useEffect(() => {
     form.reset({
       ...resident,
-      nextAppointment: resident.nextAppointment ? new Date(resident.nextAppointment) : undefined,
-    })
-  }, [resident, form])
+      nextAppointment: resident.nextAppointment
+        ? new Date(resident.nextAppointment)
+        : undefined,
+    });
+  }, [resident, form]);
 
   function onSubmit(values: FormData) {
     onUpdateResident({
       ...resident,
       ...values,
-      nextAppointment: values.nextAppointment ? values.nextAppointment.toISOString() : ''
+      nextAppointment: values.nextAppointment
+        ? values.nextAppointment.toISOString()
+        : "",
     });
   }
 
