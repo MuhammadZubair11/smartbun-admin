@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -46,7 +45,9 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 type AddResidentDialogProps = {
-  onAddResident: (resident: Omit<Resident, "id" | "lastSeen" | "status" | "bloodO2">) => void;
+  onAddResident: (
+    resident: Omit<Resident, "id" | "lastSeen" | "status" | "bloodO2">
+  ) => void;
 };
 
 export function AddResidentDialog({ onAddResident }: AddResidentDialogProps) {
@@ -63,7 +64,12 @@ export function AddResidentDialog({ onAddResident }: AddResidentDialogProps) {
   });
 
   function onSubmit(values: FormData) {
-    onAddResident({...values, nextAppointment: values.nextAppointment?.toISOString()});
+    onAddResident({
+      ...values,
+      nextAppointment: values.nextAppointment
+        ? values.nextAppointment.toISOString()
+        : "",
+    });
     form.reset();
     setOpen(false);
   }
@@ -131,7 +137,10 @@ export function AddResidentDialog({ onAddResident }: AddResidentDialogProps) {
                 <FormItem>
                   <FormLabel>Medical History</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g., History of hypertension..." {...field} />
+                    <Textarea
+                      placeholder="e.g., History of hypertension..."
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
