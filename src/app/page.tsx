@@ -20,11 +20,9 @@ export default function LoginPage() {
             <AppLogo className="h-12 w-12 text-primary" />
           </div>
           <CardTitle className="text-2xl font-bold">
-            SmartWatch Command Center
+            SmartBun Admin Login
           </CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
+          <CardDescription>Admin access only</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
@@ -33,28 +31,17 @@ export default function LoginPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="admin@example.com"
                 required
               />
             </div>
             <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="#"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
+              <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" required />
             </div>
             <Button type="submit" className="w-full" asChild>
               <Link href="/dashboard">Login</Link>
             </Button>
-          </div>
-          <div className="mt-4 text-center text-sm">
-            Access for Admins, Doctors, and Nurses only.
           </div>
         </CardContent>
       </Card>
